@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unknown Munitions - Social Media Calendar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="container">
+                <h1>Unknown Munitions</h1>
+                <h2>Social Media Calendar</h2>
+            </div>
+        </header>
+
+        <main class="container">
+            <div class="calendar-controls">
+                <div class="month-navigation">
+                    <button id="prevMonth" class="btn btn--secondary">
+                        <span aria-hidden="true">←</span>
+                        <span class="sr-only">Previous Month</span>
+                    </button>
+                    <h3 id="currentMonthDisplay">July 2025</h3>
+                    <button id="nextMonth" class="btn btn--secondary">
+                        <span aria-hidden="true">→</span>
+                        <span class="sr-only">Next Month</span>
+                    </button>
+                </div>
+                <div class="month-selector">
+                    <label for="monthSelect" class="sr-only">Select Month</label>
+                    <select id="monthSelect" class="form-control">
+                        <option value="2025-07">July 2025</option>
+                        <option value="2025-08">August 2025</option>
+                        <option value="2025-09">September 2025</option>
+                        <option value="2025-10">October 2025</option>
+                        <option value="2025-11">November 2025</option>
+                        <option value="2025-12">December 2025</option>
+                        <option value="2026-01">January 2026</option>
+                        <option value="2026-02">February 2026</option>
+                        <option value="2026-03">March 2026</option>
+                        <option value="2026-04">April 2026</option>
+                        <option value="2026-05">May 2026</option>
+                        <option value="2026-06">June 2026</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="content-area">
+                <div class="calendar-sidebar">
+                    <div class="platform-filters card">
+                        <div class="card__header">
+                            <h4>Platform Filters</h4>
+                        </div>
+                        <div class="card__body">
+                            <div class="form-group">
+                                <div class="checkbox-container">
+                                    <input type="checkbox" id="filterYoutube" checked>
+                                    <label for="filterYoutube" class="platform-label youtube-label">
+                                        <span class="platform-indicator"></span>
+                                        YouTube
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox-container">
+                                    <input type="checkbox" id="filterInstagramFeed" checked>
+                                    <label for="filterInstagramFeed" class="platform-label instagram-feed-label">
+                                        <span class="platform-indicator"></span>
+                                        Instagram Feed
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox-container">
+                                    <input type="checkbox" id="filterInstagramStories" checked>
+                                    <label for="filterInstagramStories" class="platform-label instagram-stories-label">
+                                        <span class="platform-indicator"></span>
+                                        Instagram Stories
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox-container">
+                                    <input type="checkbox" id="filterTwitter" checked>
+                                    <label for="filterTwitter" class="platform-label twitter-label">
+                                        <span class="platform-indicator"></span>
+                                        X/Twitter
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stats-container card">
+                        <div class="card__header">
+                            <h4>Monthly Statistics</h4>
+                        </div>
+                        <div class="card__body">
+                            <div id="monthStats">
+                                <div class="stat-item">
+                                    <div class="stat-label">Total Posts:</div>
+                                    <div class="stat-value" id="totalPosts">-</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">YouTube:</div>
+                                    <div class="stat-value" id="youtubePosts">-</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Instagram Feed:</div>
+                                    <div class="stat-value" id="instagramFeedPosts">-</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Instagram Stories:</div>
+                                    <div class="stat-value" id="instagramStoriesPosts">-</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">X/Twitter:</div>
+                                    <div class="stat-value" id="twitterPosts">-</div>
+                                </div>
+                            </div>
+
+                            <div class="monthly-theme-container">
+                                <h5>Monthly Theme:</h5>
+                                <div id="monthlyTheme" class="monthly-theme">-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calendar-container card">
+                    <div class="card__body">
+                        <div class="calendar">
+                            <div class="calendar-header">
+                                <div class="weekday">Sun</div>
+                                <div class="weekday">Mon</div>
+                                <div class="weekday">Tue</div>
+                                <div class="weekday">Wed</div>
+                                <div class="weekday">Thu</div>
+                                <div class="weekday">Fri</div>
+                                <div class="weekday">Sat</div>
+                            </div>
+                            <div id="calendarDays" class="calendar-days"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="postDetailsContainer" class="post-details-container card hidden">
+                <div class="card__header">
+                    <div class="flex justify-between items-center">
+                        <h4 id="postDetailsDate">Post Details</h4>
+                        <button id="closePostDetails" class="btn btn--secondary btn--sm">
+                            <span aria-hidden="true">×</span>
+                            <span class="sr-only">Close details</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="card__body">
+                    <div id="postDetailsList" class="post-details-list"></div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <div class="container">
+                <p>Unknown Munitions Social Media Calendar © 2025</p>
+            </div>
+        </footer>
+    </div>
+
+    <div id="statsChart" class="chart-container">
+        <img src="https://pplx-res.cloudinary.com/image/upload/v1750192063/pplx_code_interpreter/5d793dd0_srukzf.jpg" alt="Monthly Social Media Posting Schedule for Unknown Munitions (July 2025 - June 2026)" class="stats-chart">
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
